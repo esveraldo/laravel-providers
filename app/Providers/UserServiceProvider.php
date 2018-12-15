@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\User;
 use Illuminate\Support\ServiceProvider;
 
 class UserServiceProvider extends ServiceProvider
@@ -13,7 +14,9 @@ class UserServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->singleton('user', function() {
+            return User::find(1);
+        });
     }
 
     /**
